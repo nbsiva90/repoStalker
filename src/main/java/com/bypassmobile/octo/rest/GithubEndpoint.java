@@ -16,7 +16,7 @@ public interface GithubEndpoint {
     @GET("/users/{id}")
     public void getUser(@Path("id") String user, Callback<User> callback);
 
-    @GET("/users/{id}/following")
+    @GET("/users/{id}/followers")
     public void getFollowingUser(@Path("id") String user, Callback<List<User>> callback);
 
     @GET("/orgs/{id}/members")

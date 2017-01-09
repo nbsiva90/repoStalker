@@ -3,22 +3,21 @@ package com.bypassmobile.octo;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.bypassmobile.octo.adapter.RecyclerMembersAdapter;
 import com.bypassmobile.octo.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends BaseActivity {
+/**
+ * Created by sivanatarajanbalasubramania on 1/9/17.
+ */
+public class FollowerActivity extends BaseActivity {
     private RecyclerView mRecyclerMembers;
     private LinearLayoutManager mLayoutManagerMembers;
     private RecyclerView.Adapter mAdapter;
@@ -32,8 +31,7 @@ public class MainActivity extends BaseActivity {
 
     private void init(){
 
-
-        getEndpoint().getOrganizationMember("bypasslane", new Callback<List<User>>() {
+        getEndpoint().getFollowingUser("jspies", new Callback<List<User>>() {
             @Override
             public void success(List<User> users, Response response) {
                 mAdapter = new RecyclerMembersAdapter(getApplicationContext(), users);
@@ -43,9 +41,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void failure(RetrofitError error) {}
         });
-
-
-
     }
 
     @Override
